@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!--给父工程添加springboot父工程，让创建的父工程去继承springBoot父工程-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.4.1</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.bd.p2p</groupId>
+    <artifactId>001-p2p-parent</artifactId>
+    <version>1.0.0</version>
+
+    <!--父工程的 packaging 必须设置为 pom-->
+    <packaging>pom</packaging>
+    <!--子工程 -->
+    <modules>
+        <module>../002p2pcommon</module>
+        <module>../003p2pexterface</module>
+        <module>../004-p2p-dataservice</module>
+        <module>../005-p2p-web</module>
+    </modules>
+
+    <!--管理依赖的版本-->
+    <properties>
+        <java.version>1.8</java.version>
+        <dubbo-spring-boot-starter.version>2.0.0</dubbo-spring-boot-starter.version>
+        <mybatis-spring-boot-starter.version>2.0.0</mybatis-spring-boot-starter.version>
+        <zkclient.version>0.10</zkclient.version>
+        <spring-boot-starter-data-redis.version>2.4.1</spring-boot-starter-data-redis.version>
+        <mysql-connector-java.version>8.0.22</mysql-connector-java.version>
+        <kaptcha.version>2.3.2</kaptcha.version>
+        <commons-lang3.version>3.9</commons-lang3.version>
+    </properties>
+
+    <!--管理springboot父工程没有管理到的依赖-->
+    <dependencyManagement>
+        <dependencies>
+            <!--dubbo集成springboot起步依赖 -->
+            <dependency>
+                <groupId>com.alibaba.spring.boot</groupId>
+                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>${dubbo-spring-boot-starter.version}</version>
+            </dependency>
+            <!--zookeeper注册中心-->
+            <dependency>
+                <groupId>com.101tec</groupId>
+                <artifactId>zkclient</artifactId>
+                <version>${zkclient.version}</version>
+            </dependency>
+            <!--mybatis集成springboot起步依赖 -->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis-spring-boot-starter.version}</version>
+            </dependency>
+            <!--验证码 -->
+            <dependency>
+                <groupId>com.github.penggle</groupId>
+                <artifactId>kaptcha</artifactId>
+                <version>${kaptcha.version}</version>
+            </dependency>
+            <!--Apache commons-->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

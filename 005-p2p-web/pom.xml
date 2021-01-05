@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!--继承父工程 -->
+    <parent>
+        <artifactId>001-p2p-parent</artifactId>
+        <groupId>com.bd.p2p</groupId>
+        <version>1.0.0</version>
+        <relativePath>../001-p2p-parent</relativePath>
+    </parent>
+
+    <artifactId>005-p2p-web</artifactId>
+
+
+
+
+    <dependencies>
+        <!--SpringBoot 集成 Thymeleaf 的起步依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <!--springboot集成web起步依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--dubbo集成springboot起步依赖 -->
+        <dependency>
+            <groupId>com.alibaba.spring.boot</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+        </dependency>
+        <!--zookeeper注册中心-->
+        <dependency>
+            <groupId>com.101tec</groupId>
+            <artifactId>zkclient</artifactId>
+        </dependency>
+        <!--阿里解析 JSON 的 fastjson 依赖-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.56</version>
+        </dependency>
+        <!--Apache commons-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <!--Dom4j 依赖-->
+        <dependency>
+            <groupId>org.dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+            <version>2.0.2</version>
+        </dependency>
+        <!--公共工程-->
+        <dependency>
+            <groupId>com.bd.p2p</groupId>
+            <artifactId>002-p2p-common</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!--接口工程 -->
+        <dependency>
+            <groupId>com.bd.p2p</groupId>
+            <artifactId>003-p2p-exterface</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!--Google 生成二维码依赖-->
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>core</artifactId>
+            <version>3.1.0</version>
+
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>javase</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+
+              <!--版本冲突-->
+        <!--<dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+            <version>2.6.7</version>
+            <scope>compile</scope>
+        </dependency>-->
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- springboot 编译插件 -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

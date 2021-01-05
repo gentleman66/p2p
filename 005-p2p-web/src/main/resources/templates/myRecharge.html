@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>动力金融网 - 专业的互联网金融信息服务平台</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/cashbox-share.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/fund-guanli.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/share.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/base.css}"/>
+    <script type="text/javascript" language="javascript" th:src="@{/js/jquery-1.7.2.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/trafficStatistics.js}"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#myCash").attr("class", "on");
+        })
+        $(document).ready(function () {
+            $("#overView").removeClass("on");
+            $("#myAccount").addClass("on");
+        });
+        $(document).ready(function () {
+            $("#chongzhijilu").addClass("on");
+        });
+    </script>
+</head>
+
+<body>
+<!--页头start-->
+<div id="header">
+    <div th:include="commons/header :: html"></div>
+</div>
+<!--页头end-->
+
+<!-- 二级导航栏start -->
+<div th:include="commons/subNav :: html"></div>
+<!-- 二级导航栏end -->
+
+<!--页中start-->
+<div class="mainBox">
+    <div class="homeWap">
+        <div class="fund-guanli clearfix">
+            <div class="left-nav">
+                <div th:include="commons/leftNav :: html"></div>
+            </div>
+            <div class="right-body">
+                <div class="right-wap">
+                    <div class="deal-data">
+                        <dl>
+                            <dt>
+                                <span class="deal-time">充值时间</span>
+                                <span class="deal-name">充值描述</span>
+                                <span class="deal-type" style="width:120px">类型</span>
+                                <span class="deal-money">充值金额(元)</span>
+                                <span class="deal-balance">充值状态</span>
+                            </dt>
+                            <dd th:each="rechargeRecord,rechargeRecordStat:${rechargeRecordList}">
+                                <div class="deal-time"th:text="${#dates.format(rechargeRecord.rechargeTime, 'yyyy-MM-dd
+HH:mm:ss')}">2016-09-18 10:23:11</div>
+                                <div class="deal-name" th:text="${rechargeRecord.rechargeDesc}">支付理财</div>
+                                <div class="deal-type" style="width:120px">充值</div>
+                                <div class="deal-money" th:text="${rechargeRecord.rechargeMoney}">100.0</div>
+                                <div class="deal-balance">
+                                    <div th:switch="${rechargeRecord.rechargeStatus}">
+                                        <div th:case="0">
+                                            充值中
+                                        </div>
+                                        <div th:case="1">
+                                            充值成功
+                                        </div>
+                                        <div th:case="2">
+                                            充值失败
+                                        </div>
+                                    </div>
+                                    充值成功
+                                </div>
+                            </dd>
+                            <div class="touzi_fenye" style="width:100%; text-align:center;line-height:30px;" >
+                                　
+                                <td>
+                                    <span th:text="|共${totalRows}条${totalPage}页　当前为第${currentPage}页　|">共20条3页　当前为第2页　</span>　
+                            <span th:switch="${currentPage}">
+                                <span th:case="1">
+						        首页
+						            上一页
+					            </span>
+					            <span th:case="*">
+						            <a id="linkHomePage" th:href="@{/loan/toRecharge}">首页</a>
+						            <a id="linkPreviousPage" th:href="@{/loan/toRecharge(currentPage=${currentPage}-1)}">上一页</a>
+					            </span>
+				                </span>
+                                    <span th:switch="${currentPage}">
+				                <span th:case="${totalPage}">
+
+				                </span>
+				                    <span th:case="*">
+					                    <a id="linkNextPage" th:href="@{/loan/toRecharge(currentPage=${currentPage}+1)}">下一页 </a>
+					                    <a id="linkLastPage" th:href="@{/loan/toRecharge(currentPage=${totalPage})}">尾页</a>
+				                </span>
+			                    </span>
+                                </td>
+
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--页中end-->
+
+<!--页脚start-->
+<div th:include="commons/footer :: html"></div>
+<!--页脚end-->
+</body>
+</html>
